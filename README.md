@@ -50,3 +50,7 @@ Rezultatai:
 * Naudojant <b>deque</b> duoemnų tipą duomenų skirstymas sutrumpėjo maždaug 1.35 karto.
 * Naudojant <b>vector</b> duoemnų tipą duomenų skirstymo laikas išliko beveik toks pat.
 
+## Versija v1.1
+
+Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase.
+
