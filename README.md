@@ -54,6 +54,9 @@ Rezultatai:
 
 Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase. Atlikti bandymai su skirtingais optimizavimo flag'ais O1, O2, O3.</br>
 
+O1 flag:</br>
 ![01_flag](01_flag.png)
+O2 flag:</br>
 ![02_flag](02_flag.png)
+O3 flag:</br>
 ![03_flag](03_flag.png)
