@@ -57,7 +57,8 @@ Ankstesni bandymai su struktūromis: </br>
 ![vector](v05_vector/vector_time_taken.jpg)</br>
 Testavimas su clasėmis: </br>
 ![class_vector](class_vector_compare.png)</br>
-
+Rezultatai rodo, kad naudodami klasę programa veikia keturis kartus greičiau.</br>
+</br>
 
 
 O1 flag:</br>
