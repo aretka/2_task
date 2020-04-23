@@ -52,5 +52,8 @@ Rezultatai:
 
 ## Versija v1.1
 
-Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase.
+Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase. Atlikti bandymai su skirtingais optimizavimo flag'ais O1, O2, O3.</br>
 
+![01_flag](01_flag.png)
+![02_flag](02_flag.png)
+![03_flag](03_flag.png)
