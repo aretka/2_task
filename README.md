@@ -54,9 +54,15 @@ Rezultatai:
 
 Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase. Atlikti bandymai su skirtingais optimizavimo flag'ais O1, O2, O3.</br>
 
+![vector](v05_vector/vector_time_taken.jpg)</br>
+
+
+
 O1 flag:</br>
-![01_flag](01_flag.png)
+![01_flag](01_flag.png)</br>
 O2 flag:</br>
-![02_flag](02_flag.png)
+![02_flag](02_flag.png)</br>
 O3 flag:</br>
-![03_flag](03_flag.png)
+![03_flag](03_flag.png)</br>
+
+Rezultatai rodo, kad dirbant su klasėmis, optimizuojant su flag'ais programos veikimo sparta beveik visiškai nepakinta.
