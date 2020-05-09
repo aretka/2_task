@@ -23,15 +23,26 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-class Studentas {
+class Zmogus{
+    protected:
+    string vardas, pavarde;
+    public:
+    virtual string getVardas() = 0;
+    virtual string getPavarde() = 0;
+};
+
+class Studentas: public Zmogus {
 // realizacija
 private:
-  string vardas;
-  string pavarde;
   double egzaminas, galutinis;
   vector<double> C;
 // interfeisas
 public:
+    Studentas(string v, string p, double g){
+        vardas = v;
+        pavarde = p;
+        galutinis = g;
+    }
   const Studentas operator=(const Studentas &stud){
       if(this == &stud)
       return *this;
