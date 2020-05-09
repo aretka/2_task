@@ -1,5 +1,8 @@
 # 2uzduotis
 
-## Versija v1.2
+## Versija v1.5
 
-Šioje versijoje pridėti klasės operatoriai '=' bei '<<' tam kad programa galėtų naudotis paprasčiau. Operatorius '=' leidžia prilyginti vienus klasės elementus kitiems. O operatorius '<<' palegvina failų išvedimą.
+Šioje versijoje vietoje turimos Studentas klas
+
+    Vietoje Jūsų turimos vienos Studentas (ar kažkaip kitaip pavadintos) klasės sukurkite dvi: bazinę klasę, skirtą bendrai aprašyti žmogų ir tuomet iš jos išvestinę (derived) klasę - Studentas.
+    Padarykite, kad žmogui skirta bazinė klasė būtų abstrakčioji klasė, t.y. nebūtų galima sukurti žmogaus tipo objektų, o tik objektus gautus iš jos išvestinių klasių.
