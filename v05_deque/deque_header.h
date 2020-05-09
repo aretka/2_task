@@ -3,7 +3,7 @@
 
 
 #include <bits/stdc++.h>
-#include <vector>
+#include <deque>
 #include <limits>
 #include <fstream>
 #include <sstream>
@@ -13,7 +13,7 @@
 
 
 using std::string;
-using std::vector;
+using std::deque;
 using std::deque;
 using std::list;
 using std::ofstream;
@@ -23,20 +23,70 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+class Studentas {
+// realizacija
+private:
+  string vardas;
+  string pavarde;
+  double egzaminas, galutinis;
+  deque<double> C;
+// interfeisas
+public:
+    const Studentas operator=(const Studentas &stud){
+      if(this == &stud)
+      return *this;
 
-struct mokinys{
-string vardas, pavarde;
-vector<int> C;
-int n=0, egzaminas;
-float vidurkis, galutinis;
+      this->vardas = stud.vardas;
+      this->pavarde = stud.pavarde;
+      this->galutinis = stud.galutinis;
+      this->egzaminas = stud.egzaminas;
+
+      return *this;
+  }
+  void setVardas(string v)
+  {
+      vardas = v;
+  }
+  void setPavarde(string p)
+  {
+      pavarde = p;
+  }
+  void setGalutinis(double g)
+  {
+      galutinis = g;
+  }
+  void setEgzaminas(double e)
+  {
+      egzaminas = e;
+  }
+  string getVardas(){
+      return vardas;
+  }
+  string getPavarde(){
+      return pavarde;
+  }
+  double getGalutinis(){
+      return galutinis;
+  }
+  double getEgzaminas(){
+      return egzaminas;
+  }
 };
 
-string IntToStr(int);
-deque<mokinys> skirstykStudentusNetrinant(deque<mokinys>&);
-deque<mokinys> skirstykStudentusTrinant(deque<mokinys>&);
-void GalBalas(deque<mokinys>&);
-bool comparePagalVarda(const mokinys&, const mokinys&);
-bool comparePagalPavarde(const mokinys&, const mokinys&);
-bool comparePagalGalutini(const mokinys&, const mokinys&);
+/*struct Studentas{
+string vardas, pavarde;
+deque<int> C;
+int egzaminas;
+float galutinis;
+};*/
+
+ofstream& operator<<(ofstream& , Studentas&);
+string IntToStr(int );
+deque<Studentas> skirstykStudentusNetrinant(deque<Studentas>&);
+deque<Studentas> skirstykStudentusTrinant(deque<Studentas>&);
+//void GalBalas(deque<Studentas>& );
+bool comparePagalVarda( Studentas& ,  Studentas& );
+bool comparePagalPavarde( Studentas& ,  Studentas& );
+bool comparePagalGalutini( Studentas& ,  Studentas& );
 
 #endif

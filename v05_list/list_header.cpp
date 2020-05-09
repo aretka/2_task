@@ -1,5 +1,13 @@
 #include "list_header.h"
 
+ofstream& operator << (ofstream &outs, Studentas &stud)
+{
+   char buffer[100];
+   sprintf(buffer, "%-20s %-20s %-20.2f\n", stud.getPavarde().c_str(), stud.getVardas().c_str(), stud.getGalutinis());
+   outs << buffer;
+   return outs;
+}
+
 string IntToStr(int n)
 {
     std::stringstream result;
@@ -7,18 +15,18 @@ string IntToStr(int n)
     return result.str();
 }
 
-list<mokinys> skirstykStudentusNetrinant(list<mokinys>& studentai)
+list<Studentas> skirstykStudentusNetrinant(list<Studentas>& studentai)
 {
- list<mokinys> kieti, minksti;
- list<mokinys>::iterator it;
- mokinys duomenys;
+ list<Studentas> kieti, minksti;
+ list<Studentas>::iterator it;
+ Studentas duomenys;
  it = studentai.begin();
  while ( it != studentai.end())
  {
-     duomenys.vardas = it->vardas;
-     duomenys.pavarde = it->pavarde;
-     duomenys.galutinis = it->galutinis;
-     if (it->galutinis < 5)
+     duomenys.setVardas(it->getVardas());
+     duomenys.setPavarde(it->getPavarde());
+     duomenys.setGalutinis(it->getGalutinis());
+     if (it->getGalutinis() < 5)
      minksti.push_back(duomenys);
      else
      kieti.push_back(duomenys);
@@ -30,20 +38,20 @@ list<mokinys> skirstykStudentusNetrinant(list<mokinys>& studentai)
  return minksti; // grąžina vektorių iš studentų gavusių skolą
 }
 
-list<mokinys> skirstykStudentusTrinant(list<mokinys>& studentai)
+list<Studentas> skirstykStudentusTrinant(list<Studentas>& studentai)
 {
- list<mokinys> minksti;
- list<mokinys>::iterator it;
- mokinys duomenys;
+ list<Studentas> minksti;
+ list<Studentas>::iterator it;
+ Studentas duomenys;
  it = studentai.begin();
  while ( it != studentai.end())
  {
      
-     if (it->galutinis < 5)
+     if (it->getGalutinis() < 5)
 	{
-	 duomenys.vardas = it->vardas;
-         duomenys.pavarde = it->pavarde;
-         duomenys.galutinis = it->galutinis;
+	 duomenys.setVardas(it->getVardas());
+     duomenys.setPavarde(it->getPavarde());
+     duomenys.setGalutinis(it->getGalutinis());
 	 minksti.push_back(duomenys);
 	 it = studentai.erase(it);
 	}     

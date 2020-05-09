@@ -1,4 +1,4 @@
-#include "list_header.h"
+#include "vector_header.h"
 
 int main()
 {
@@ -6,11 +6,9 @@ int main()
     ofstream outFile, outFile1, outFile2;
     ifstream inFile;
     int Number_of_files=5, sk=1000;
-    string filename, eilute, vardas, pavarde, filename1 = "kietiakai.txt", filename2 = "vargsiukai.txt";
-    list <mokinys> Stud, vargseliai;
-    list <mokinys>::iterator it;
-    mokinys duomenys;
-
+    double galutinis;
+    string filename, filename1="vargsiukai.txt", filename2="kietiakai.txt", eilute, vardas, pavarde;
+    vector <Studentas> Stud, vargseliai;
         for(int i=0; i<Number_of_files; i++)
         {
             filename="file_" + IntToStr(sk) +".txt";
@@ -23,7 +21,7 @@ int main()
             outFile << vardas;
             outFile .width(15);
             outFile << pavarde ;
-            outFile .width(10);
+            outFile .width(15);
             outFile << std::fixed<< std::setprecision(2) << 1.0*rand()/RAND_MAX*10;
             outFile << "\n";
         }
@@ -35,15 +33,22 @@ int main()
         start = clock();
         for(int q=0; q<sk; q++)
         {
-            inFile >> duomenys.vardas;
-            inFile >> duomenys.pavarde;
-            inFile >> duomenys.galutinis;
-            Stud.push_back(duomenys);
+            Stud.push_back(Studentas());
+            inFile >> vardas;
+            inFile >> pavarde;
+            inFile >> galutinis;
+            Stud[q].setVardas(vardas);
+            Stud[q].setPavarde(pavarde);
+            Stud[q].setGalutinis(galutinis);
         }
         end = clock();
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
         cout << sk <<" irasu skaitymo laikas: " <<time_taken <<" sec.\n";
-        //sort(Stud.begin(), Stud.end());
+
+
+        //Studentu galutiniu rezultatu rikiavimas pagal galutini bala
+        sort(Stud.begin(), Stud.end(), comparePagalGalutini);
+
         //mokiniu padalinimas i dvi grupes, vargsiuku atskyrimas nuo kietiaku
 
         start = clock();
@@ -52,36 +57,33 @@ int main()
         time_taken = double(end - start) / double(CLOCKS_PER_SEC);
         cout << sk <<" irasu padalijimas i dvi grupes laikas: " <<time_taken <<" sec.\n";
 
-            outFile2.open(filename2.c_str());
-
-            it = vargseliai.begin();
-        while(it!=vargseliai.end())
+        //vargsiuku rasymas i faila
+            outFile2.open(filename1.c_str());
+        for(int t=0; t<vargseliai.size(); t++)
         {
             outFile2 .width(16);
-            outFile2 << it->vardas;
+            outFile2 << vargseliai[t].getVardas();
             outFile2 .width(16);
-            outFile2 << it->pavarde ;
+            outFile2 << vargseliai[t].getPavarde();
             outFile2 .width(22);
-            outFile2 << std::fixed<<std::setprecision(2)<< it->galutinis <<"\n";
-            it++;
+            outFile2 << std::fixed<<std::setprecision(2)<< vargseliai[t].getGalutinis() <<"\n";
+            t++;
         }
 
-            outFile1.open(filename1.c_str());
 
-            it = Stud.begin();
-        while(it!=Stud.end())
+        //kietiaku rasymas i faila
+            outFile1.open(filename2.c_str());
+        for(int t=0; t<Stud.size(); t++)
         {
             outFile1 .width(16);
-            outFile1 << it->vardas;
+            outFile1 << Stud[t].getVardas();
             outFile1 .width(16);
-            outFile1 << it->pavarde ;
+            outFile1 << Stud[t].getPavarde();
             outFile1 .width(22);
-            outFile1 << std::fixed<<std::setprecision(2)<< it->galutinis <<"\n";
-            it++;
+            outFile1 << std::fixed<<std::setprecision(2)<< Stud[t].getGalutinis() <<"\n";
         }
 
         Stud.clear();
-        vargseliai.clear();
         sk*=10;
         outFile2.close();
         outFile1.close();

@@ -1,5 +1,13 @@
 #include "deque_header.h"
 
+ofstream& operator << (ofstream &outs, Studentas &stud)
+{
+   char buffer[100];
+   sprintf(buffer, "%-20s %-20s %-20.2f\n", stud.getPavarde().c_str(), stud.getVardas().c_str(), stud.getGalutinis());
+   outs << buffer;
+   return outs;
+}
+
 string IntToStr(int n)
 {
     std::stringstream result;
@@ -7,39 +15,40 @@ string IntToStr(int n)
     return result.str();
 }
 
-deque<mokinys> skirstykStudentusNetrinant(deque<mokinys>& studentai)
+deque<Studentas> skirstykStudentusNetrinant(deque<Studentas>& studentai)
 {
-     deque<mokinys> kieti, minksti;
-         for (int i = 0; i != studentai.size(); i++)
-         {
-             if (studentai[i].galutinis < 5)
-             minksti.push_back(studentai[i]);
-             else
-             kieti.push_back(studentai[i]);
-         }
+ deque<Studentas> kieti, minksti;
+ for (int i = 0; i != studentai.size(); i++)
+ {
+     if (studentai[i].getGalutinis() < 5)
+     minksti.push_back(studentai[i]);
+     else
+     kieti.push_back(studentai[i]);
+ }
 
-     studentai = kieti; // vektoriui 'studentai' priskiriame kietus
-     return minksti; // grąžina vektorių iš studentų gavusių skolą
+ studentai = kieti; // vektoriui 'studentai' priskiriame kietus
+ return minksti; // grąžina vektorių iš studentų gavusių skolą
 }
 
-deque<mokinys> skirstykStudentusTrinant(deque<mokinys>& studentai)
+deque<Studentas> skirstykStudentusTrinant(deque<Studentas>& studentai)
 {
-     deque<mokinys> kieti, minksti;
-     deque<mokinys>::size_type i = 0;
-         while (i!=studentai.size())
-         {
-             if (studentai[i].galutinis < 5)
-             {
-                 minksti.push_back(studentai[i]);
-                 studentai.erase(studentai.begin() + i);
-             }
-             else
-             ++i;
-         }
-     return minksti; // grąžina vektorių iš studentų gavusių skolą
+ deque<Studentas> minksti;
+ deque<Studentas>::size_type i = 0;
+ while(i!=studentai.size())
+ {
+     if (studentai[i].getGalutinis() < 5)
+	{
+ 	 minksti.push_back(studentai[i]);
+         i++;
+	}
+     else
+        break;
+ }
+ studentai.erase(studentai.begin(), studentai.begin() + i);
+ return minksti; // grąžina vektorių iš studentų gavusių skolą
 }
 
-void GalBalas(deque<mokinys>& studentai)
+/*void GalBalas(deque<Studentas>& studentai)
 {
     int suma;
     for(int i=0; i<studentai.size(); i++)
@@ -51,24 +60,24 @@ void GalBalas(deque<mokinys>& studentai)
         }
         if(studentai[i].C.size() == 0)
         {
-            studentai[i].galutinis = 0.6*studentai[i].egzaminas;
+            studentai[i].setGalutinis(0.6*studentai[i].egzaminas);
         }
         else{
-            studentai[i].galutinis = (0.4*suma/studentai[i].C.size())+(0.6*studentai[i].egzaminas);
+            studentai[i].setGalutinis(0.4*suma/studentai[i].C.size())+(0.6*studentai[i].egzaminas);
         }
     }
+}*/
+
+bool comparePagalVarda( Studentas& x,  Studentas& y)
+{
+    return x.getVardas() < y.getVardas();
 }
 
-bool comparePagalVarda(const mokinys& x, const mokinys& y)
+bool comparePagalPavarde( Studentas& x,  Studentas& y)
 {
-    return x.vardas < y.vardas;
+    return x.getPavarde() < y.getPavarde();
 }
-
-bool comparePagalPavarde(const mokinys& x, const mokinys& y)
+bool comparePagalGalutini( Studentas& x,  Studentas& y)
 {
-    return x.pavarde < y.pavarde;
-}
-bool comparePagalGalutini(const mokinys& x, const mokinys& y)
-{
-    return x.galutinis < y.galutinis;
+    return x.getGalutinis() < y.getGalutinis();
 }

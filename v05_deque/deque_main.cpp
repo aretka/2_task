@@ -5,10 +5,10 @@ int main()
     srand(time(NULL));
     ofstream outFile, outFile1, outFile2;
     ifstream inFile;
-    int Number_of_files=1, sk=1000;
+    int Number_of_files=5, sk=1000;
+    double galutinis;
     string filename, filename1="vargsiukai.txt", filename2="kietiakai.txt", eilute, vardas, pavarde;
-    deque <mokinys> Stud, vargseliai;
-
+    deque <Studentas> Stud, vargseliai;
         for(int i=0; i<Number_of_files; i++)
         {
             filename="file_" + IntToStr(sk) +".txt";
@@ -33,10 +33,13 @@ int main()
         start = clock();
         for(int q=0; q<sk; q++)
         {
-            Stud.push_back(mokinys());
-            inFile >> Stud[q].vardas;
-            inFile >> Stud[q].pavarde;
-            inFile >> Stud[q].galutinis;
+            Stud.push_back(Studentas());
+            inFile >> vardas;
+            inFile >> pavarde;
+            inFile >> galutinis;
+            Stud[q].setVardas(vardas);
+            Stud[q].setPavarde(pavarde);
+            Stud[q].setGalutinis(galutinis);
         }
         end = clock();
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
@@ -59,11 +62,11 @@ int main()
         for(int t=0; t<vargseliai.size(); t++)
         {
             outFile2 .width(16);
-            outFile2 << vargseliai[t].vardas;
+            outFile2 << vargseliai[t].getVardas();
             outFile2 .width(16);
-            outFile2 << vargseliai[t].pavarde ;
+            outFile2 << vargseliai[t].getPavarde();
             outFile2 .width(22);
-            outFile2 << std::fixed<<std::setprecision(2)<< vargseliai[t].galutinis <<"\n";
+            outFile2 << std::fixed<<std::setprecision(2)<< vargseliai[t].getGalutinis() <<"\n";
             t++;
         }
 
@@ -73,15 +76,14 @@ int main()
         for(int t=0; t<Stud.size(); t++)
         {
             outFile1 .width(16);
-            outFile1 << Stud[t].vardas;
+            outFile1 << Stud[t].getVardas();
             outFile1 .width(16);
-            outFile1 << Stud[t].pavarde ;
+            outFile1 << Stud[t].getPavarde();
             outFile1 .width(22);
-            outFile1 << std::fixed<<std::setprecision(2)<< Stud[t].galutinis <<"\n";
+            outFile1 << std::fixed<<std::setprecision(2)<< Stud[t].getGalutinis() <<"\n";
         }
 
         Stud.clear();
-        vargseliai.clear();
         sk*=10;
         outFile2.close();
         outFile1.close();
