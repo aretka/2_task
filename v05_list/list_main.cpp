@@ -10,7 +10,7 @@ int main()
     string filename, eilute, vardas, pavarde, filename1 = "kietiakai.txt", filename2 = "vargsiukai.txt";
     list <Studentas> Stud, vargseliai;
     list <Studentas>::iterator it;
-    Studentas duomenys;
+    Studentas student;
 
         for(int i=0; i<Number_of_files; i++)
         {
@@ -39,10 +39,10 @@ int main()
             inFile >> vardas;
             inFile >> pavarde;
             inFile >> galutinis;
-            duomenys.setVardas(vardas);
-            duomenys.setPavarde(pavarde);
-            duomenys.setGalutinis(galutinis);
-            Stud.push_back(duomenys);
+            student.setVardas(vardas);
+            student.setPavarde(pavarde);
+            student.setGalutinis(galutinis);
+            Stud.push_back(student);
         }
         end = clock();
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
