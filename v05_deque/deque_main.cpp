@@ -5,7 +5,7 @@ int main()
     srand(time(NULL));
     ofstream outFile, outFile1, outFile2;
     ifstream inFile;
-    int Number_of_files=5, sk=1000;
+    int Number_of_files=1, sk=1000;
     double galutinis;
     string filename, filename1="vargsiukai.txt", filename2="kietiakai.txt", eilute, vardas, pavarde;
     deque <Studentas> Stud, vargseliai;
@@ -33,13 +33,11 @@ int main()
         start = clock();
         for(int q=0; q<sk; q++)
         {
-            Stud.push_back(Studentas());
+            
             inFile >> vardas;
             inFile >> pavarde;
             inFile >> galutinis;
-            Stud[q].setVardas(vardas);
-            Stud[q].setPavarde(pavarde);
-            Stud[q].setGalutinis(galutinis);
+            Stud.push_back(Studentas(vardas, pavarde, galutinis));
         }
         end = clock();
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
