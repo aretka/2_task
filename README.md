@@ -4,7 +4,7 @@
 
 Šioje versijoje yra pakeista iš struct į class tipo duomenų saugojimą. Atlikti bandymai naudojant vector konteinerį su struktūra bei klase. Atlikti bandymai su skirtingais optimizavimo flag'ais O1, O2, O3.</br>
 Ankstesni bandymai su struktūromis: </br>
-![vector](v05_vector/vector_time_taken.jpg)</br>
+![vector](v05_vector/vector_struct_compare.jpg)</br>
 Testavimas su clasėmis: </br>
 ![class_vector](class_vector_compare.png)</br>
 Rezultatai rodo, kad naudodami klasę programa veikia keturis kartus greičiau.</br>
