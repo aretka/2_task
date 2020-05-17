@@ -7,7 +7,7 @@ Ankstesni bandymai su struktūromis: </br>
 ![struct_vector](vector_struct_compare.png)</br>
 Testavimas su clasėmis: </br>
 ![class_vector](class_vector_compare.png)</br>
-Rezultatai rodo, kad naudodami klasę programa veikia keturis kartus greičiau.</br>
+Rezultatai rodo, kad naudodami klasę programa veikia 1.2 karto lėčiau negu su struktūromis.</br>
 </br>
 
 
