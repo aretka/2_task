@@ -29,7 +29,10 @@ Rezultatai rodo, kad dirbant su klasėmis, optimizuojant su flag'ais programos v
 
 ## Versija v2.0
 
-Tai galutinė programos versija. Šioje versijoje pridėta doxygen dokumentacija, kuri yra doxygen kataloge. Pridėtas unit testavimas naudojant "acutest.h" failą.  
+Tai galutinė programos versija. Šioje versijoje pridėta doxygen dokumentacija, kuri yra doxygen kataloge. Pridėtas unit testavimas naudojant "acutest.h" failą. 
+</br>
+Unit testing using acutest
+![UnitTest](unit_testing.png)</br>
 
 # Įdiegimo instrukcija
 
